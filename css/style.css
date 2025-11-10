@@ -1,0 +1,590 @@
+/* RESET Y ESTILOS BASE - Paso 1 del CSS */
+
+/* Este bloque resetea todos los márgenes y rellenos por defecto del navegador */
+/* y establece el box-sizing para que sea más fácil trabajar con dimensiones */
+* {
+    margin: 0;                  /* Elimina márgenes por defecto */
+    padding: 0;                 /* Elimina rellenos por defecto */
+    box-sizing: border-box;     /* Hace que padding y border se incluyan en el width/height */
+}
+
+/* Estilos generales del cuerpo de la página */
+/* FONDO CON TEXTURA - Imagen de fondo para toda la página */
+
+body {
+    font-family: 'Arial', sans-serif;       /* Fuente principal */
+    line-height: 1.6;                       /* Espacio entre líneas para mejor lectura */
+    color: #333;                          /* Color de texto principal (gris oscuro) */
+    background-color: #fff;               /* Color de fondo blanco */
+    
+    /* NUEVO: Fondo con textura borrosa */
+    background-image: url('../assets/img/Fondo_Pagina.jpg');    /* Ruta a tu imagen */
+    backdrop-filter: blur(8px);                                 /* Efecto de desenfoque */
+    background-size: cover;                                     /* Cubre toda la pantalla */
+    background-position: center;                                /* Centra la imagen */
+    background-repeat: no-repeat;                               /* No repite la imagen */
+    background-attachment: fixed;                               /* Fondo fijo al hacer scroll */
+    
+    /* Opcional: Color de respaldo si la imagen no carga */
+    background-color: #f8f8f8;
+}
+/* CONTENIDO PRINCIPAL - Para que el texto sea legible sobre el fondo */
+main {
+    background-color: rgba(255, 255, 255, 0.706); /* Fondo blanco semi-transparente */
+    min-height: 90vh;                               /* Mínimo alto de toda la pantalla */
+    padding: 3rem;                                  /* Espacio arriba y abajo */
+}
+
+/* CONTENEDORES - Ajustamos para mejor legibilidad */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative; /* Para que esté sobre el fondo */
+}
+
+/* TIPOGRAFÍA - Estilos para textos y títulos */
+/* Estilos para todos los títulos (h1 hasta h6) */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;    /* Espacio debajo de cada título */
+    font-weight: bold;      /* Texto en negrita */
+    line-height: 1.2;       /* Espacio entre líneas más compacto que el texto normal */
+}
+
+/* Tamaños específicos para cada tipo de título */
+h1 { 
+    font-size: 2.5rem;       /* 40px - Título principal más grande */
+}
+
+h2 { 
+    font-size: 2rem;        /* 32px - Subtítulos importantes */
+}
+
+h3 { 
+    font-size: 1.75rem;     /* 28px - Títulos de secciones */
+}
+
+h4 { 
+    font-size: 1.5rem;      /* 24px - Subtítulos menores */
+}
+
+h5 { 
+    font-size: 1.25rem;     /* 20px - Texto destacado */
+}
+
+h6 { 
+    font-size: 1rem;        /* 16px - Texto normal pero en negrita */
+}
+
+/* Estilos para párrafos normales */
+p {
+    margin-bottom: 1rem;    /* Espacio debajo de cada párrafo */
+}
+
+/* ENLACES - Estilos para todos los links */
+a {
+    color: inherit;             /* Hereda el color del elemento padre */
+    text-decoration: none;      /* Elimina el subrayado por defecto */
+    transition: all 0.3s ease;  /* Suaviza los cambios (hover, etc.) */
+}
+
+/* Efecto cuando pasas el mouse sobre un enlace */
+a:hover {
+    color: #a89da1;        /* Cambia a color rosa cuando haces hover */
+}
+
+/* LISTAS - Estilos para listas ordenadas y no ordenadas */
+ul, ol {
+    margin-bottom: 1rem;    /* Espacio debajo de las listas */
+    padding-left: 2rem;     /* Sangría para los items de lista */
+}
+
+/* IMÁGENES - Estilos para que las imágenes sean responsive */
+img {
+    max-width: 100%;    /* Nunca será más ancha que su contenedor */
+    height: auto;       /* Mantiene la proporción original */
+    display: block;     /* Elimina espacio extra debajo de la imagen */
+}
+
+/* CONTENEDORES - Estructura principal del layout */
+/* Contenedor principal que centra el contenido y limita el ancho máximo */
+
+.container {
+    max-width: 1200px;  /* Ancho máximo en pantallas grandes */
+    margin: 0 auto;     /* Centra el contenedor horizontalmente */
+    padding: 0 20px;    /* Espacio a los lados en móviles */
+}
+
+/* Clase para secciones con espaciado consistente */
+.section {
+    padding: 4rem 0;    /* 64px arriba y abajo, 0 a los lados */
+}
+
+/* RESPONSIVE - Ajustes para tablets y móviles */
+/* Tablets (768px o menos) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;  /* Menos espacio en los lados en tablets */
+    }
+    
+    /* Ajustamos tamaños de texto para tablets */
+    h1 { font-size: 2rem; }      /* 32px */
+    h2 { font-size: 1.75rem; }   /* 28px */
+    h3 { font-size: 1.5rem; }    /* 24px */
+}
+
+/* Móviles (480px o menos) */
+@media (max-width: 480px) {
+    .section {
+        padding: 2rem 0;  /* Menos espaciado en móviles */
+    }
+}
+/* HEADER - Barra superior con logo y navegación */
+.header {
+    background-color: rgb(255, 255, 255);         /* Blanco casi sólido */
+    backdrop-filter: blur(15px);                    /* Efecto de desenfoque moderno */
+    border-bottom: 2px solid #f0f0f0;             /* Línea sutil en la parte inferior */
+    position: fixed;                                /* Fijo en la parte superior */
+    top: 0;                                         /* Pegado al tope */
+    left: 0;                                        /* Pegado a la izquierda */
+    width: 100%;                                    /* Ancho completo */
+    z-index: 1000;                                  /* Por encima de todo */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);    /* Sombra sutil para profundidad */
+}
+
+/* Contenedor interno del header para alinear logo y menú */
+.header-container {
+    max-width: 1200px;                  /* Mismo ancho máximo que el container general */
+    margin: 0 auto;                     /* Centrado */
+    padding: 0 20px;                    /* Espacio a los lados */
+    display: flex;                      /* Usamos flexbox para alinear elementos */
+    justify-content: space-between;     /* Logo a la izquierda, menú a la derecha */
+    align-items: center;                /* Centrado vertical */
+    height: 80px;                       /* Altura fija del header */
+}
+
+/* LOGO - Estilos para el nombre de la peluquería */
+.logo h1 {
+    color: #000000;          /* Color rosa para la peluquería */
+    font-size: 1.8rem;         /* Tamaño del logo */
+    font-weight: bold;         /* Negrita */
+    margin-bottom: 0;          /* Sin margen inferior */
+}
+/* NAVEGACIÓN - Menú principal */
+.nav {
+    display: flex;              /* Flexbox para los items del menú */
+}
+
+.nav-list {
+    display: flex;             /* Items en línea horizontal */
+    list-style: none;          /* Elimina los puntos de la lista */
+    gap: 2rem;                 /* Espacio entre items del menú */
+    margin: 0;                 /* Sin márgenes */
+    padding: 0;                /* Sin relleno */
+}
+/* ENLACES DE NAVEGACIÓN - Items del menú */
+.nav-link {
+    color: #000000;          /* Color oscuro para los enlaces */
+    text-decoration: none;     /* Sin subrayado */
+    font-weight: 500;          /* Peso medio para mejor legibilidad */
+    padding: 0.5rem 1rem;      /* Espacio interno para hacer click fácil */
+    border-radius: 6px;        /* Esquinas redondeadas */
+    transition: all 0.3s ease; /* Transición suave para hover */
+    position: relative;        /* Para efectos decorativos */
+}
+
+/* Efecto hover - cuando el mouse pasa sobre un enlace */
+.nav-link:hover {
+    color: #9b0535;                              /* Cambia a color rosa */
+    background-color: rgba(233, 30, 98, 0.21);  /* Fondo rosa muy suave */
+}
+
+/* Enlace activo - página actual */
+.nav-link.active {
+    color: #9b0535;                             /* Color rosa */
+    background-color: rgba(233, 30, 98, 0.21);  /* Fondo rosa muy suave */
+    font-weight: 600;                             /* Un poco más grueso */
+
+}
+
+/* Línea decorativa bajo el enlace activo */
+.nav-link.active::after {
+    content: '';                    /* Necesario para pseudo-elementos */
+    position: absolute;             /* Posicionamiento absoluto */
+    bottom: -2px;                   /* Justo debajo del enlace */
+    left: 50%;                      /* Centrado horizontal */
+    transform: translateX(-50%);    /* Ajuste fino para centrar */
+    width: 80%;                     /* Ancho del 80% del enlace */
+    height: 2px;                    /* Altura de la línea */
+    background-color: #e91e63;    /* Color rosa */
+    border-radius: 2px;             /* Esquinas redondeadas */
+}
+
+/* ESPACIO PARA HEADER FIJADO - MUY IMPORTANTE */
+/* Como el header es fixed, necesitamos agregar espacio 
+   en el contenido para que no quede oculto detrás */
+body {
+    padding-top: 80px;        /* Mismo valor que la altura del header */
+}
+/* MENÚ HAMBURGUESA - Para dispositivos móviles */
+
+.menu-toggle {
+    display: none;            /* Oculto por defecto (solo visible en móviles) */
+    flex-direction: column;   /* Apila las barras verticalmente */
+    cursor: pointer;          /* Cursor de mano al pasar */
+    gap: 4px;                 /* Espacio entre barras */
+}
+
+.bar {
+    width: 25px;                /* Ancho de las barras */
+    height: 3px;                /* Alto de las barras */
+    background-color: #333;   /* Color de las barras */
+    border-radius: 2px;         /* Esquinas redondeadas */
+    transition: all 0.3s ease;  /* Transición suave */
+}
+/* RESPONSIVE - Ajustes para tablets y móviles */
+
+/* Tablets (768px o menos) */
+@media (max-width: 768px) {
+    .header-container {
+        height: 70px;        /* Header un poco más bajo en tablets */
+    }
+    
+    .nav-list {
+        gap: 1.5rem;         /* Menos espacio entre items */
+    }
+    
+    .logo h1 {
+        font-size: 1.6rem;   /* Logo un poco más pequeño */
+    }
+    
+    body {
+        padding-top: 70px;   /* Ajustamos el espacio del header */
+    }
+}
+
+/* Móviles (480px o menos) */
+@media (max-width: 480px) {
+    .header-container {
+        height: 60px;        /* Header más compacto en móviles */
+    }
+    
+    .logo h1 {
+        font-size: 1.4rem;   /* Logo más pequeño */
+    }
+    
+    .nav-link {
+        padding: 0.4rem 0.8rem; /* Menos padding en móviles */
+        font-size: 0.9rem;   /* Texto un poco más pequeño */
+    }
+    
+    body {
+        padding-top: 60px;   /* Ajustamos el espacio del header */
+    }
+}
+
+/* ================================================== */
+/* HERO SECTION - Banner principal de cada página */
+/* ================================================== */
+
+.hero {
+    background: linear-gradient(135deg, #e91e629a 0%, #9b0534 100%);
+    color: white;
+    padding: 6rem 0 4rem;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* ================================================== */
+/* BOTONES PRINCIPALES - Call to Action */
+/* ================================================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: white;
+    color: #9b0534;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: #9b0534;
+}
+
+/* ================================================== */
+/* CONTENIDO PRINCIPAL - Estructura base */
+/* ================================================== */
+
+.main-content {
+    padding: 4rem 0;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.section-title {
+    text-align: center;
+    color: #9b0534;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #9b0534;
+    border-radius: 2px;
+}
+
+/* ================================================== */
+/* TARJETAS - Para servicios, productos, equipo */
+/* ================================================== */
+
+.card {
+    background: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    color:#9b0534;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* ================================================== */
+/* GRID SYSTEM - Para layouts responsivos */
+/* ================================================== */
+
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* ================================================== */
+/* FOOTER - Mejoramos el footer */
+/* ================================================== */
+
+.footer {
+    background-color: #9b0534;
+    color: white;
+    padding: 3rem 0 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer p {
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+/* ================================================== */
+/* RESPONSIVE - Ajustes para móviles */
+/* ================================================== */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 4rem 0 3rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .main-content {
+        padding: 3rem 0;
+    }
+}
+
+/* Layout para video y tarjetas */
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Video con tamaño fijo que no cambia */
+.video-column video {
+    width: 60%; /* Ancho fijo */
+    height: 500px; /* Altura fija */
+    object-fit: cover; /* Mantiene la proporción cubriendo el área */
+    margin: 0 auto; /* Centra el video */
+    border-radius: 8px; /* Esquinas redondeadas */
+    display: block; /* Elimina espacio extra debajo */
+
+}
+
+/* Contenedor de tarjetas lateral */
+.cards-sidebar {
+    display: flex; /* Flexbox para alinear tarjetas */
+    flex-direction: column; /* Apila las tarjetas verticalmente */
+    gap: 1.5rem; /* Espacio entre tarjetas */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .video-column video {
+        height: 300px; /* Un poco más bajo en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .video-column video {
+        height: 250px; /* Aún más bajo en móviles pequeños */
+    }
+}
+
+/* ================================================== */
+/* GALERÍA LINEAL CORREGIDA - 3 imágenes por fila */
+/* ================================================== */
+
+.gallery-category {
+    margin-bottom: 5rem; /* Espacio entre categorías */
+}
+
+.category-title {
+    color: #e91e63;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* CONTENEDOR PRINCIPAL - 3 columnas fijas */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
+    gap: 0.5rem; /* Espacio entre imágenes */
+    width: 100%; /* Ancho completo */
+}
+
+/* CADA ITEM DE GALERÍA */
+.gallery-item {
+    width: 100%;
+}
+
+/* IMÁGENES - tamaño fijo y uniforme */
+.gallery-image {
+    width: 57%; /* Ancho fijo */
+    height: 350px; /* ALTURA FIJA */
+    object-fit: cover; /* Esto es IMPORTANTE */
+    border-radius: 8px; /* Esquinas redondeadas */
+    display: block; /* Elimina espacio extra debajo */
+    margin: 0 auto; /* Centra la imagen */
+}
+
+/* TEXTO DEBAJO */
+.image-caption {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.image-caption p { /* Estilos para el texto de la leyenda */
+    margin: 0;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500; 
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+    }
+    
+    .gallery-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* 1 columna en móvil */
+    }
+    
+    .gallery-image {
+        height: 180px;
+    }
+}
